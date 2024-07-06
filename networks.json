@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "BoosterBronze": {
+      "address": "0x615439AF911C9f035DF3BE651141Be00c7CA3FEb",
+      "startBlock": 5526331
+    }
+  }
+}
