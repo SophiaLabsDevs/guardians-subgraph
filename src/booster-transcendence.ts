@@ -7,11 +7,11 @@ import {
   Unpaused as UnpausedEvent,
   Unstaked as UnstakedEvent,
   Upgraded as UpgradedEvent,
-} from "../generated/BoosterBronze/BoosterBronze";
+} from "../generated/BoosterTranscendence/BoosterTranscendence";
 import { Booster } from "../generated/schema";
 
 export function handlePaused(event: PausedEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.account.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.account.toString());
   const booster = Booster.load(id);
 
   if (booster) {
@@ -21,7 +21,7 @@ export function handlePaused(event: PausedEvent): void {
 }
 
 export function handleStaked(event: StakedEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.user.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.user.toString());
   const booster = Booster.load(id);
 
   if (!booster) {
@@ -30,7 +30,7 @@ export function handleStaked(event: StakedEvent): void {
 
     newBooster.startTimestamp = event.block.timestamp;
     newBooster.stakeType = event.params.stakeType;
-    newBooster.tier = "Bronze";
+    newBooster.tier = "Transcendence";
 
     newBooster.endTimestamp = event.block.timestamp.plus(
       event.params.stakeType
@@ -49,7 +49,7 @@ export function handleTransferBatch(event: TransferBatchEvent): void {
 }
 
 export function handleTransferSingle(event: TransferSingleEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.operator.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.operator.toString());
   const booster = Booster.load(id);
 
   if (booster) {
@@ -59,7 +59,7 @@ export function handleTransferSingle(event: TransferSingleEvent): void {
 }
 
 export function handleUnpaused(event: UnpausedEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.account.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.account.toString());
   const booster = Booster.load(id);
 
   if (booster && booster.pausedTimestamp) {
@@ -74,7 +74,7 @@ export function handleUnpaused(event: UnpausedEvent): void {
 }
 
 export function handleUnstaked(event: UnstakedEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.user.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.user.toString());
   const booster = Booster.load(id);
 
   if (booster) {
@@ -84,13 +84,12 @@ export function handleUnstaked(event: UnstakedEvent): void {
 }
 
 export function handleUpgraded(event: UpgradedEvent): void {
-  const id = Bytes.fromUTF8("Bronze" + event.params.user.toString());
+  const id = Bytes.fromUTF8("Transcendence" + event.params.user.toString());
   const booster = Booster.load(id);
 
   if (booster) {
     booster.stakeType = event.params.stakeType;
     booster.endTimestamp = booster.startTimestamp.plus(event.params.stakeType);
-
     booster.save();
   }
 }

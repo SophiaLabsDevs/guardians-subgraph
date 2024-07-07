@@ -16,21 +16,11 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - ApprovalForAll
-        - Paused
-        - Staked
-        - TransferBatch
-        - TransferSingle
-        - URI
-        - Unpaused
-        - Unstaked
-        - Upgraded
+        - Booster
       abis:
         - name: BoosterBronze
           file: ./abis/BoosterBronze.json
       eventHandlers:
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
         - event: Paused(address)
           handler: handlePaused
         - event: Staked(indexed address,uint256)
@@ -39,8 +29,6 @@ dataSources:
           handler: handleTransferBatch
         - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleTransferSingle
-        - event: URI(string,indexed uint256)
-          handler: handleURI
         - event: Unpaused(address)
           handler: handleUnpaused
         - event: Unstaked(indexed address,uint256)
@@ -48,3 +36,131 @@ dataSources:
         - event: Upgraded(indexed address,uint256)
           handler: handleUpgraded
       file: ./src/booster-bronze.ts
+  - kind: ethereum
+    name: BoosterDiamond
+    network: sepolia
+    source:
+      address: "0x087eDe2b960deA71Ed8a8a71BC722E8249DeE661"
+      abi: BoosterDiamond
+      startBlock: 5526331
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Booster
+      abis:
+        - name: BoosterDiamond
+          file: ./abis/BoosterDiamond.json
+      eventHandlers:
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Staked(indexed address,uint256)
+          handler: handleStaked
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Unstaked(indexed address,uint256)
+          handler: handleUnstaked
+        - event: Upgraded(indexed address,uint256)
+          handler: handleUpgraded
+      file: ./src/booster-diamond.ts
+  - kind: ethereum
+    name: BoosterGold
+    network: sepolia
+    source:
+      address: "0xc65c8991070B6debacAF3E2edD710ff39db080e0"
+      abi: BoosterGold
+      startBlock: 5526331
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Booster
+      abis:
+        - name: BoosterGold
+          file: ./abis/BoosterGold.json
+      eventHandlers:
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Staked(indexed address,uint256)
+          handler: handleStaked
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Unstaked(indexed address,uint256)
+          handler: handleUnstaked
+        - event: Upgraded(indexed address,uint256)
+          handler: handleUpgraded
+      file: ./src/booster-gold.ts
+  - kind: ethereum
+    name: BoosterTranscendence
+    network: sepolia
+    source:
+      address: "0x0d50dc1026705430F628A572Ca2dB7541f118559"
+      abi: BoosterTranscendence
+      startBlock: 5526331
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Booster
+      abis:
+        - name: BoosterTranscendence
+          file: ./abis/BoosterTranscendence.json
+      eventHandlers:
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Staked(indexed address,uint256)
+          handler: handleStaked
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Unstaked(indexed address,uint256)
+          handler: handleUnstaked
+        - event: Upgraded(indexed address,uint256)
+          handler: handleUpgraded
+      file: ./src/booster-transcendence.ts
+  - kind: ethereum
+    name: BoosterSingularity
+    network: sepolia
+    source:
+      address: "0x7202647Ef6abec398bcfA813531737D6491c98B9"
+      abi: BoosterSingularity
+      startBlock: 5526331
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Booster
+      abis:
+        - name: BoosterSingularity
+          file: ./abis/BoosterSingularity.json
+      eventHandlers:
+        - event: Paused(address)
+          handler: handlePaused
+        - event: Staked(indexed address,uint256)
+          handler: handleStaked
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: Unpaused(address)
+          handler: handleUnpaused
+        - event: Unstaked(indexed address,uint256)
+          handler: handleUnstaked
+        - event: Upgraded(indexed address,uint256)
+          handler: handleUpgraded
+      file: ./src/booster-singularity.ts
